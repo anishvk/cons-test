@@ -1,0 +1,25 @@
+platform: linux
+
+image_resource:
+  type: registry-image
+  source:
+    repository: openjdk
+    tag: 11-jdk
+
+inputs:
+- name: app-source-code
+
+outputs:
+- name: deployable-artifact
+
+params:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    cd app-source-code
+    ./gradlew build -x test
+    cp build/libs/*.jar ../deployable-artifact/app.jar
