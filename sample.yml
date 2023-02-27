@@ -33,6 +33,10 @@ jobs:
     params:
       command: push
       app_name: ((my_app_name))
+      
+      
+      
+      #https://medium.com/@scottpaige1/deploying-an-app-to-pcf-using-concourse-c94ead1f3b29
       memory: 128M
       path: ((my_app_path))
       buildpack: ((cf_buildpack))
